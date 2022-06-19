@@ -27,7 +27,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        addNewDonorMenuItem = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
@@ -57,9 +57,14 @@ public class HomePage extends javax.swing.JFrame {
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Donor.png"))); // NOI18N
         jMenu1.setText("Donor");
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Add new.png"))); // NOI18N
-        jMenuItem1.setText("Add New Donor");
-        jMenu1.add(jMenuItem1);
+        addNewDonorMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Add new.png"))); // NOI18N
+        addNewDonorMenuItem.setText("Add New Donor");
+        addNewDonorMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNewDonorMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(addNewDonorMenuItem);
         jMenu1.add(jSeparator1);
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Update details.png"))); // NOI18N
@@ -180,6 +185,11 @@ public class HomePage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
+    private void addNewDonorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewDonorMenuItemActionPerformed
+        // TODO add your handling code here:
+        new AddDonorPage().setVisible(true); 
+    }//GEN-LAST:event_addNewDonorMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -214,6 +224,7 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem addNewDonorMenuItem;
     private javax.swing.JMenu exitMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JLabel jLabel1;
@@ -223,7 +234,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

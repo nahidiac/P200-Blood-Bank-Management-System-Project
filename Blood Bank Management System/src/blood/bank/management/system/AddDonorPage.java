@@ -2,6 +2,7 @@ package blood.bank.management.system;
 
 import java.sql.*;
 import database.ConnectionProvider;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 /**
  *
@@ -27,29 +28,30 @@ public class AddDonorPage extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        fullNameField = new javax.swing.JTextField();
+        fatherNameField = new javax.swing.JTextField();
+        motherNameField = new javax.swing.JTextField();
+        mobileNumberField = new javax.swing.JTextField();
+        dateOfBirthField = new com.toedter.calendar.JDateChooser();
+        genderField = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
+        cityField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        addressField = new javax.swing.JTextArea();
+        bloodGroupField = new javax.swing.JComboBox<>();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
-        idLabel = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        donorIdLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(340, 130));
         setUndecorated(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -97,24 +99,24 @@ public class AddDonorPage extends javax.swing.JFrame {
         jLabel9.setText("Gender");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 502, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 204, 219, -1));
+        fullNameField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(fullNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 204, 219, -1));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 259, 219, -1));
+        fatherNameField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(fatherNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 259, 219, -1));
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 317, 219, -1));
+        motherNameField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(motherNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 317, 219, -1));
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 439, 219, -1));
+        mobileNumberField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(mobileNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 439, 219, -1));
 
-        jDateChooser1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 372, 219, -1));
+        dateOfBirthField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(dateOfBirthField, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 372, 219, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 499, 219, -1));
+        genderField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        genderField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others" }));
+        getContentPane().add(genderField, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 499, 219, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Email");
@@ -132,30 +134,35 @@ public class AddDonorPage extends javax.swing.JFrame {
         jLabel13.setText("Complete Address");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 418, -1, -1));
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 204, 319, -1));
+        emailField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 204, 319, -1));
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 317, 319, -1));
+        cityField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(cityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 317, 319, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        addressField.setColumns(20);
+        addressField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        addressField.setRows(5);
+        jScrollPane1.setViewportView(addressField);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(659, 384, 319, -1));
 
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 259, 319, -1));
+        bloodGroupField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bloodGroupField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" }));
+        getContentPane().add(bloodGroupField, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 259, 319, -1));
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 554, 1296, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/save.png"))); // NOI18N
-        jButton1.setText("Save");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 590, -1, -1));
+        saveButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/save.png"))); // NOI18N
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 590, -1, -1));
 
         resetButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         resetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Update details.png"))); // NOI18N
@@ -177,11 +184,13 @@ public class AddDonorPage extends javax.swing.JFrame {
         });
         getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 590, -1, -1));
 
-        idLabel.setText("a");
-        getContentPane().add(idLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
+
+        donorIdLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        donorIdLabel.setForeground(new java.awt.Color(255, 0, 0));
+        donorIdLabel.setText("jLabel14");
+        getContentPane().add(donorIdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 145, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -189,20 +198,20 @@ public class AddDonorPage extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         try {
-            Connection connection = ConnectionProvider.getConnection(); 
-            Statement statement = connection.createStatement(); 
-            ResultSet resultSet = statement.executeQuery("select max(iddonor) from donor"); 
-            if(resultSet.first()) {
+            Connection connection = ConnectionProvider.getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select max(iddonor) from donor");
+            if(resultSet.next()) {
                 int id = resultSet.getInt(1); 
-                id = id + 1; 
+                id++; 
                 String str = String.valueOf(id); 
-                jLabel16.setText(str); // the label for donor id 
+                donorIdLabel.setText(str); // the label for donor id
             }
             else {
-                jLabel16.setText("1");
+                donorIdLabel.setText("1");
             }
         }
-        catch(SQLException e) {
+        catch(Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_formComponentShown
@@ -217,6 +226,37 @@ public class AddDonorPage extends javax.swing.JFrame {
         setVisible(false); 
         new AddDonorPage().setVisible(true);
     }//GEN-LAST:event_resetButtonActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        // TODO add your handling code here:
+        String donorId = donorIdLabel.getText(); 
+        String name = fullNameField.getText(); 
+        String fatherName = fatherNameField.getText(); 
+        String motherName = motherNameField.getText(); 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
+        String dateOfBirth = dateFormat.format(dateOfBirthField.getDate()); 
+        String mobileNumber = mobileNumberField.getText(); 
+        String gender = (String) genderField.getSelectedItem(); 
+        String email = emailField.getText(); 
+        String bloodGroup = (String) bloodGroupField.getSelectedItem(); 
+        String city = cityField.getText(); 
+        String address = addressField.getText(); 
+        
+        // System.out.printf("%s%s%s%s%s%s%s%s%s%s%s", donorId, name, fatherName, motherName, dateOfBirth, mobileNumber, gender, email, bloodGroup, city, address);
+        // /*
+        try {
+            Connection connection = ConnectionProvider.getConnection();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("insert into donor values ( '"+donorId+"', '"+name+"', '"+fatherName+"', '"+motherName+"', '"+dateOfBirth+"', '"+mobileNumber+"', '"+gender+"', '"+email+"', '"+bloodGroup+"', '"+city+"', '"+address+"' )");
+            JOptionPane.showMessageDialog(null, "Successfully added a new donor!");
+            this.setVisible(false); 
+            new AddDonorPage().setVisible(true);
+        }
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        // */
+    }//GEN-LAST:event_saveButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -249,12 +289,16 @@ public class AddDonorPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea addressField;
+    private javax.swing.JComboBox<String> bloodGroupField;
+    private javax.swing.JTextField cityField;
     private javax.swing.JButton closeButton;
-    private javax.swing.JLabel idLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser dateOfBirthField;
+    private javax.swing.JLabel donorIdLabel;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JTextField fatherNameField;
+    private javax.swing.JTextField fullNameField;
+    private javax.swing.JComboBox<String> genderField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -272,13 +316,9 @@ public class AddDonorPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField mobileNumberField;
+    private javax.swing.JTextField motherNameField;
     private javax.swing.JButton resetButton;
+    private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 }
