@@ -3,7 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package blood.bank.management.system;
-
+import java.sql.*; 
+import database.ConnectionProvider; 
+import javax.swing.JOptionPane;
+import javax.swing.JTable; 
+import net.proteanit.sql.DbUtils;
 /**
  *
  * @author nahid
@@ -29,9 +33,9 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        allDonorDetailsTable = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        closeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -47,7 +51,8 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 29, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 95, 1405, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        allDonorDetailsTable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        allDonorDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,22 +63,44 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        allDonorDetailsTable.setRowHeight(30);
+        allDonorDetailsTable.setRowMargin(5);
+        jScrollPane1.setViewportView(allDonorDetailsTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 124, 1300, 473));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 624, 1403, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Exit application.png"))); // NOI18N
-        jButton1.setText("Close");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 658, -1, -1));
+        closeButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Exit application.png"))); // NOI18N
+        closeButton.setText("Close");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 658, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
          // TODO add your handling code here:
+         try {
+             Connection connection = ConnectionProvider.getConnection(); 
+             Statement statement = connection.createStatement(); 
+             ResultSet resultSet = statement.executeQuery("select * from donor");
+             // allDonorDetailsTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+             allDonorDetailsTable.setModel(DbUtils.resultSetToTableModel(resultSet));
+         }
+         catch(Exception e) {
+              JOptionPane.showMessageDialog(null, e);
+         }
     }//GEN-LAST:event_formComponentShown
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_closeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,11 +138,11 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTable allDonorDetailsTable;
+    private javax.swing.JButton closeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
