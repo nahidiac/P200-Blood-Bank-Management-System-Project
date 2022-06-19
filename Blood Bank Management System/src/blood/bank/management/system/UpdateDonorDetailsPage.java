@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package blood.bank.management.system;
-
+import java.sql.*; 
+import database.ConnectionProvider; 
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 /**
  *
  * @author nahid
@@ -29,8 +32,8 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        searchField = new javax.swing.JTextField();
+        searchButton = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -38,25 +41,25 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        fullNameField = new javax.swing.JTextField();
+        fatherNameField = new javax.swing.JTextField();
+        motherNameField = new javax.swing.JTextField();
+        dateOfBirthField = new javax.swing.JTextField();
+        mobileNumberField = new javax.swing.JTextField();
+        genderField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
+        bloodGroupField = new javax.swing.JTextField();
+        cityField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        addressField = new javax.swing.JTextArea();
         jSeparator3 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
+        closeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(340, 130));
@@ -72,13 +75,18 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
         jLabel2.setText("Donor ID");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 108, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 105, 219, -1));
+        searchField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 105, 219, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/search1.png"))); // NOI18N
-        jButton1.setText("Search");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(693, 105, -1, -1));
+        searchButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/search1.png"))); // NOI18N
+        searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(693, 105, -1, -1));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 158, 1360, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -105,23 +113,23 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
         jLabel8.setText("Gender");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 455, -1, -1));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 186, 302, -1));
+        fullNameField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(fullNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 186, 302, -1));
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 240, 302, -1));
+        fatherNameField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(fatherNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 240, 302, -1));
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 293, 302, -1));
+        motherNameField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(motherNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 293, 302, -1));
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 339, 302, -1));
+        dateOfBirthField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(dateOfBirthField, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 339, 302, -1));
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 397, 302, -1));
+        mobileNumberField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(mobileNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 397, 302, -1));
 
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 452, 302, -1));
+        genderField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(genderField, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 452, 302, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Email");
@@ -139,40 +147,127 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
         jLabel12.setText("Address");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(566, 383, -1, -1));
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(699, 186, 281, -1));
+        emailField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(699, 186, 281, -1));
 
-        jTextField9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(699, 240, 281, -1));
+        bloodGroupField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(bloodGroupField, new org.netbeans.lib.awtextra.AbsoluteConstraints(699, 240, 281, -1));
 
-        jTextField10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(699, 293, 281, -1));
+        cityField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(cityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(699, 293, 281, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        addressField.setColumns(20);
+        addressField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        addressField.setRows(5);
+        jScrollPane1.setViewportView(addressField);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(699, 372, -1, -1));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 500, 1293, 10));
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/save.png"))); // NOI18N
-        jButton2.setText("Update");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 568, -1, -1));
+        updateButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        updateButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/save.png"))); // NOI18N
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 568, -1, -1));
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Update details.png"))); // NOI18N
-        jButton3.setText("Reset");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 568, -1, -1));
+        resetButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        resetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Update details.png"))); // NOI18N
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 568, -1, -1));
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Exit application.png"))); // NOI18N
-        jButton4.setText("Close");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(733, 568, -1, -1));
+        closeButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Exit application.png"))); // NOI18N
+        closeButton.setText("Close");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(733, 568, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false); 
+    }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false); 
+        new UpdateDonorDetailsPage().setVisible(true);
+    }//GEN-LAST:event_resetButtonActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        String donorId = searchField.getText(); 
+        try {
+            Connection connection = ConnectionProvider.getConnection(); 
+            Statement statement = connection.createStatement(); 
+            ResultSet resultSet = statement.executeQuery("select * from donor where iddonor='"+donorId+"'"); 
+            
+            if(resultSet.next()) {
+                fullNameField.setText(resultSet.getString(2));
+                fatherNameField.setText(resultSet.getString(3));
+                motherNameField.setText(resultSet.getString(4));
+                dateOfBirthField.setText(resultSet.getString(5));
+                mobileNumberField.setText(resultSet.getString(6));
+                genderField.setText(resultSet.getString(7));
+                emailField.setText(resultSet.getString(8));
+                bloodGroupField.setText(resultSet.getString(9));
+                cityField.setText(resultSet.getString(10));
+                addressField.setText(resultSet.getString(11));
+                
+                searchField.setEditable(false);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Donor id does not exist!");
+            }
+        }
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        String donorId = searchField.getText(); 
+        String name = fullNameField.getText(); 
+        String fatherName = fatherNameField.getText(); 
+        String motherName = motherNameField.getText(); 
+        String dateOfBirth = dateOfBirthField.getText(); 
+        String mobileNumber = mobileNumberField.getText(); 
+        String gender = genderField.getText(); 
+        String email = emailField.getText(); 
+        String bloodGroup = bloodGroupField.getText(); 
+        String city = cityField.getText(); 
+        String address = addressField.getText(); 
+        
+        // System.out.printf("%s%s%s%s%s%s%s%s%s%s%s", donorId, name, fatherName, motherName, dateOfBirth, mobileNumber, gender, email, bloodGroup, city, address);
+        // /*
+        try {
+            Connection connection = ConnectionProvider.getConnection();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("update donor set name='"+name+"', father_name='"+fatherName+"', mother_name='"+motherName+"', date_of_birth='"+dateOfBirth+"', mobile_no='"+mobileNumber+"', gender='"+gender+"', email='"+email+"', blood_group='"+bloodGroup+"', city='"+city+"', address='"+address+"' where iddonor='"+donorId+"'");
+            JOptionPane.showMessageDialog(null, "Successfully added a new donor!");
+            this.setVisible(false); 
+            new UpdateDonorDetailsPage().setVisible(true);
+        }
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        // */
+    }//GEN-LAST:event_updateButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,10 +305,15 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JTextArea addressField;
+    private javax.swing.JTextField bloodGroupField;
+    private javax.swing.JTextField cityField;
+    private javax.swing.JButton closeButton;
+    private javax.swing.JTextField dateOfBirthField;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JTextField fatherNameField;
+    private javax.swing.JTextField fullNameField;
+    private javax.swing.JTextField genderField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -230,16 +330,11 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField mobileNumberField;
+    private javax.swing.JTextField motherNameField;
+    private javax.swing.JButton resetButton;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JTextField searchField;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

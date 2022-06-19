@@ -29,7 +29,7 @@ public class HomePage extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         addNewDonorMenuItem = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        updateDetailsMenuItem = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -67,9 +67,14 @@ public class HomePage extends javax.swing.JFrame {
         jMenu1.add(addNewDonorMenuItem);
         jMenu1.add(jSeparator1);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Update details.png"))); // NOI18N
-        jMenuItem2.setText("Update Details");
-        jMenu1.add(jMenuItem2);
+        updateDetailsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Update details.png"))); // NOI18N
+        updateDetailsMenuItem.setText("Update Details");
+        updateDetailsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateDetailsMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(updateDetailsMenuItem);
         jMenu1.add(jSeparator2);
 
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Details.png"))); // NOI18N
@@ -190,6 +195,11 @@ public class HomePage extends javax.swing.JFrame {
         new AddDonorPage().setVisible(true); 
     }//GEN-LAST:event_addNewDonorMenuItemActionPerformed
 
+    private void updateDetailsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDetailsMenuItemActionPerformed
+        // TODO add your handling code here:
+        new UpdateDonorDetailsPage().setVisible(true); 
+    }//GEN-LAST:event_updateDetailsMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -234,7 +244,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
@@ -248,5 +257,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JMenuItem logoutMenuItem;
+    private javax.swing.JMenuItem updateDetailsMenuItem;
     // End of variables declaration//GEN-END:variables
 }
