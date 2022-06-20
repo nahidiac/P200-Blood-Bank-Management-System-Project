@@ -3,17 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package blood.bank.management.system;
-import java.sql.*; 
-import database.ConnectionProvider; 
+
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author nahid
  */
-public class AllDonorDetailsPage extends javax.swing.JFrame {
-    
-    public AllDonorDetailsPage() {
+public class BloodGroupBasedDonorSearchPage extends javax.swing.JFrame {
+
+    /**
+     * Creates new form BloodGroupBasedDonorSearchPage
+     */
+    public BloodGroupBasedDonorSearchPage() {
         initComponents();
     }
 
@@ -28,9 +35,12 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        bloodGroupField = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         allDonorDetailsTable = new javax.swing.JTable();
-        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
         closeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,11 +53,25 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Add Donor Details");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 29, -1, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 95, 1405, -1));
+        jLabel1.setText("Search Blood by Blood Group");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 19, -1, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 85, 1267, -1));
 
-        allDonorDetailsTable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Blood group.png"))); // NOI18N
+        jLabel2.setText("Blood Group");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 109, 152, -1));
+
+        bloodGroupField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bloodGroupField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                bloodGroupFieldKeyReleased(evt);
+            }
+        });
+        getContentPane().add(bloodGroupField, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 106, 275, -1));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 172, 1261, -1));
+
+        allDonorDetailsTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         allDonorDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -60,11 +84,10 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
             }
         ));
         allDonorDetailsTable.setRowHeight(30);
-        allDonorDetailsTable.setRowMargin(5);
         jScrollPane1.setViewportView(allDonorDetailsTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 124, 1300, 473));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 624, 1403, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 193, 1267, 413));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 638, 1267, -1));
 
         closeButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Exit application.png"))); // NOI18N
@@ -74,13 +97,33 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
                 closeButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 658, -1, -1));
+        getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(488, 678, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bloodGroupFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bloodGroupFieldKeyReleased
+        // TODO add your handling code here:
+        String bloodGroup = bloodGroupField.getText(); 
+        
+        try {
+            Connection connection = ConnectionProvider.getConnection(); 
+             Statement statement = connection.createStatement(); 
+             ResultSet resultSet = statement.executeQuery("select * from donor where blood_group like '%"+bloodGroup+"%'");
+             allDonorDetailsTable.setModel(DbUtils.resultSetToTableModel(resultSet));
+        }
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_bloodGroupFieldKeyReleased
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_closeButtonActionPerformed
+
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-         // TODO add your handling code here:
+        // TODO add your handling code here:
          try {
              Connection connection = ConnectionProvider.getConnection(); 
              Statement statement = connection.createStatement(); 
@@ -92,11 +135,6 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null, e);
          }
     }//GEN-LAST:event_formComponentShown
-
-    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_closeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,28 +153,31 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AllDonorDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BloodGroupBasedDonorSearchPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AllDonorDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BloodGroupBasedDonorSearchPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AllDonorDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BloodGroupBasedDonorSearchPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AllDonorDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BloodGroupBasedDonorSearchPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new AllDonorDetailsPage().setVisible(true);
+            new BloodGroupBasedDonorSearchPage().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable allDonorDetailsTable;
+    private javax.swing.JTextField bloodGroupField;
     private javax.swing.JButton closeButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 }

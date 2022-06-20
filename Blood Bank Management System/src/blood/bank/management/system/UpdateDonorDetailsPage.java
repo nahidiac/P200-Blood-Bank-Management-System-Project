@@ -32,7 +32,7 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
-        searchField = new javax.swing.JTextField();
+        donorIdField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
@@ -75,8 +75,8 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
         jLabel2.setText("Donor ID");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 108, -1, -1));
 
-        searchField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 105, 219, -1));
+        donorIdField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(donorIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 105, 219, -1));
 
         searchButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/search1.png"))); // NOI18N
@@ -210,7 +210,7 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        String donorId = searchField.getText(); 
+        String donorId = donorIdField.getText(); 
         try {
             Connection connection = ConnectionProvider.getConnection(); 
             Statement statement = connection.createStatement(); 
@@ -228,7 +228,7 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
                 cityField.setText(resultSet.getString(10));
                 addressField.setText(resultSet.getString(11));
                 
-                searchField.setEditable(false);
+                donorIdField.setEditable(false);
             }
             else {
                 JOptionPane.showMessageDialog(null, "Donor id does not exist!");
@@ -241,7 +241,7 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-        String donorId = searchField.getText(); 
+        String donorId = donorIdField.getText(); 
         String name = fullNameField.getText(); 
         String fatherName = fatherNameField.getText(); 
         String motherName = motherNameField.getText(); 
@@ -310,6 +310,7 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
     private javax.swing.JTextField cityField;
     private javax.swing.JButton closeButton;
     private javax.swing.JTextField dateOfBirthField;
+    private javax.swing.JTextField donorIdField;
     private javax.swing.JTextField emailField;
     private javax.swing.JTextField fatherNameField;
     private javax.swing.JTextField fullNameField;
@@ -334,7 +335,6 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
     private javax.swing.JTextField motherNameField;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton searchButton;
-    private javax.swing.JTextField searchField;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

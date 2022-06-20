@@ -4,6 +4,7 @@
  */
 package blood.bank.management.system;
 import java.sql.*; 
+import javax.swing.JTable; 
 import database.ConnectionProvider; 
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
@@ -11,9 +12,12 @@ import net.proteanit.sql.DbUtils;
  *
  * @author nahid
  */
-public class AllDonorDetailsPage extends javax.swing.JFrame {
-    
-    public AllDonorDetailsPage() {
+public class LocationBasedDonorSearchPage extends javax.swing.JFrame {
+
+    /**
+     * Creates new form LocationBasedDonorSearchPage
+     */
+    public LocationBasedDonorSearchPage() {
         initComponents();
     }
 
@@ -28,12 +32,16 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        addressField = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         allDonorDetailsTable = new javax.swing.JTable();
-        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
         closeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(340, 130));
         setUndecorated(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -43,11 +51,24 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Add Donor Details");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 29, -1, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 95, 1405, -1));
+        jLabel1.setText("Search Blood Donor by Location");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 23, -1, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 83, 1316, -1));
 
-        allDonorDetailsTable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Location.png"))); // NOI18N
+        jLabel2.setText("Address");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 119, 106, -1));
+
+        addressField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        addressField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                addressFieldKeyReleased(evt);
+            }
+        });
+        getContentPane().add(addressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 116, 253, -1));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 181, 1294, -1));
+
         allDonorDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -60,11 +81,10 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
             }
         ));
         allDonorDetailsTable.setRowHeight(30);
-        allDonorDetailsTable.setRowMargin(5);
         jScrollPane1.setViewportView(allDonorDetailsTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 124, 1300, 473));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 624, 1403, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 1355, 400));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 628, 1349, 10));
 
         closeButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Exit application.png"))); // NOI18N
@@ -74,13 +94,34 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
                 closeButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 658, -1, -1));
+        getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 673, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void addressFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addressFieldKeyReleased
+        // TODO add your handling code here:
+        String location = addressField.getText(); 
+        
+        try {
+            Connection connection = ConnectionProvider.getConnection(); 
+             Statement statement = connection.createStatement(); 
+             ResultSet resultSet = statement.executeQuery("select * from donor where city like '%"+location+"%' or address like '%"+location+"%'");
+             allDonorDetailsTable.setModel(DbUtils.resultSetToTableModel(resultSet));
+        }
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_addressFieldKeyReleased
+
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-         // TODO add your handling code here:
+        // TODO add your handling code here:
          try {
              Connection connection = ConnectionProvider.getConnection(); 
              Statement statement = connection.createStatement(); 
@@ -92,11 +133,6 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null, e);
          }
     }//GEN-LAST:event_formComponentShown
-
-    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_closeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,28 +151,31 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AllDonorDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LocationBasedDonorSearchPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AllDonorDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LocationBasedDonorSearchPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AllDonorDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LocationBasedDonorSearchPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AllDonorDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LocationBasedDonorSearchPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new AllDonorDetailsPage().setVisible(true);
+            new LocationBasedDonorSearchPage().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField addressField;
     private javax.swing.JTable allDonorDetailsTable;
     private javax.swing.JButton closeButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 }

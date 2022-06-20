@@ -7,13 +7,9 @@ import javax.swing.JOptionPane;
  * @author nahid
  */
 public class HomePage extends javax.swing.JFrame {
-
-    /**
-     * Creates new form HomePage
-     */
     public HomePage() {
         initComponents();
-    }
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,9 +29,9 @@ public class HomePage extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         allDonorDetailsMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        searchByLocationMenuItem = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        searchByBloodGroupMenuItem = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
@@ -43,7 +39,7 @@ public class HomePage extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        deleteDonorMenuItem = new javax.swing.JMenuItem();
         exitMenu = new javax.swing.JMenu();
         logoutMenuItem = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
@@ -91,14 +87,24 @@ public class HomePage extends javax.swing.JFrame {
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/search user.png"))); // NOI18N
         jMenu2.setText("Search Donor");
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Location.png"))); // NOI18N
-        jMenuItem4.setText("Location");
-        jMenu2.add(jMenuItem4);
+        searchByLocationMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Location.png"))); // NOI18N
+        searchByLocationMenuItem.setText("Location");
+        searchByLocationMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchByLocationMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(searchByLocationMenuItem);
         jMenu2.add(jSeparator3);
 
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Blood group.png"))); // NOI18N
-        jMenuItem5.setText("Blood Group");
-        jMenu2.add(jMenuItem5);
+        searchByBloodGroupMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Blood group.png"))); // NOI18N
+        searchByBloodGroupMenuItem.setText("Blood Group");
+        searchByBloodGroupMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchByBloodGroupMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(searchByBloodGroupMenuItem);
 
         jMenuBar1.add(jMenu2);
 
@@ -124,9 +130,14 @@ public class HomePage extends javax.swing.JFrame {
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/delete donor.png"))); // NOI18N
         jMenu5.setText("Delete Donor");
 
-        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/delete.png"))); // NOI18N
-        jMenuItem8.setText("Delete Donor");
-        jMenu5.add(jMenuItem8);
+        deleteDonorMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/delete.png"))); // NOI18N
+        deleteDonorMenuItem.setText("Delete Donor");
+        deleteDonorMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteDonorMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu5.add(deleteDonorMenuItem);
 
         jMenuBar1.add(jMenu5);
 
@@ -210,6 +221,21 @@ public class HomePage extends javax.swing.JFrame {
         new AllDonorDetailsPage().setVisible(true); 
     }//GEN-LAST:event_allDonorDetailsMenuItemActionPerformed
 
+    private void searchByLocationMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchByLocationMenuItemActionPerformed
+        // TODO add your handling code here:
+        new LocationBasedDonorSearchPage().setVisible(true);
+    }//GEN-LAST:event_searchByLocationMenuItemActionPerformed
+
+    private void searchByBloodGroupMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchByBloodGroupMenuItemActionPerformed
+        // TODO add your handling code here:
+        new BloodGroupBasedDonorSearchPage().setVisible(true);
+    }//GEN-LAST:event_searchByBloodGroupMenuItemActionPerformed
+
+    private void deleteDonorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDonorMenuItemActionPerformed
+        // TODO add your handling code here:
+        new DeleteDonorPage().setVisible(true);
+    }//GEN-LAST:event_deleteDonorMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -246,6 +272,7 @@ public class HomePage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addNewDonorMenuItem;
     private javax.swing.JMenuItem allDonorDetailsMenuItem;
+    private javax.swing.JMenuItem deleteDonorMenuItem;
     private javax.swing.JMenu exitMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JLabel jLabel1;
@@ -255,11 +282,8 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
@@ -267,6 +291,8 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JMenuItem logoutMenuItem;
+    private javax.swing.JMenuItem searchByBloodGroupMenuItem;
+    private javax.swing.JMenuItem searchByLocationMenuItem;
     private javax.swing.JMenuItem updateDetailsMenuItem;
     // End of variables declaration//GEN-END:variables
 }
