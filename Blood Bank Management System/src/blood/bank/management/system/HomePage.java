@@ -25,11 +25,15 @@ public class HomePage extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         addNewDonorMenuItem = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        updateDetailsMenuItem = new javax.swing.JMenuItem();
+        updateDonorDetailsMenuItem = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         allDonorDetailsMenuItem = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         addPatientMenuItem = new javax.swing.JMenuItem();
+        jSeparator7 = new javax.swing.JPopupMenu.Separator();
+        updatePatientDetailsMenuItem = new javax.swing.JMenuItem();
+        jSeparator8 = new javax.swing.JPopupMenu.Separator();
+        allPatientDetailsMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         searchByLocationMenuItem = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
@@ -42,12 +46,15 @@ public class HomePage extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         deleteDonorMenuItem = new javax.swing.JMenuItem();
+        jSeparator9 = new javax.swing.JPopupMenu.Separator();
+        deletePatientMenuItem = new javax.swing.JMenuItem();
         exitMenu = new javax.swing.JMenu();
         logoutMenuItem = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
         exitMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(350, 120));
         setUndecorated(true);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/login background final2.png"))); // NOI18N
@@ -65,14 +72,14 @@ public class HomePage extends javax.swing.JFrame {
         jMenu1.add(addNewDonorMenuItem);
         jMenu1.add(jSeparator1);
 
-        updateDetailsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Update details.png"))); // NOI18N
-        updateDetailsMenuItem.setText("Update Details");
-        updateDetailsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        updateDonorDetailsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Update details.png"))); // NOI18N
+        updateDonorDetailsMenuItem.setText("Update Details");
+        updateDonorDetailsMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateDetailsMenuItemActionPerformed(evt);
+                updateDonorDetailsMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(updateDetailsMenuItem);
+        jMenu1.add(updateDonorDetailsMenuItem);
         jMenu1.add(jSeparator2);
 
         allDonorDetailsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Details.png"))); // NOI18N
@@ -97,6 +104,26 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
         jMenu6.add(addPatientMenuItem);
+        jMenu6.add(jSeparator7);
+
+        updatePatientDetailsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Update details.png"))); // NOI18N
+        updatePatientDetailsMenuItem.setText("Update Details");
+        updatePatientDetailsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePatientDetailsMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu6.add(updatePatientDetailsMenuItem);
+        jMenu6.add(jSeparator8);
+
+        allPatientDetailsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Details.png"))); // NOI18N
+        allPatientDetailsMenuItem.setText("All Patients");
+        allPatientDetailsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                allPatientDetailsMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu6.add(allPatientDetailsMenuItem);
 
         jMenuBar1.add(jMenu6);
 
@@ -144,7 +171,7 @@ public class HomePage extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/delete donor.png"))); // NOI18N
-        jMenu5.setText("Delete Donor");
+        jMenu5.setText("Delete Donor/Patient");
 
         deleteDonorMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/delete.png"))); // NOI18N
         deleteDonorMenuItem.setText("Delete Donor");
@@ -154,6 +181,11 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
         jMenu5.add(deleteDonorMenuItem);
+        jMenu5.add(jSeparator9);
+
+        deletePatientMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/delete.png"))); // NOI18N
+        deletePatientMenuItem.setText("Delete Patient");
+        jMenu5.add(deletePatientMenuItem);
 
         jMenuBar1.add(jMenu5);
 
@@ -187,16 +219,11 @@ public class HomePage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1))
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -226,10 +253,10 @@ public class HomePage extends javax.swing.JFrame {
         new AddDonorPage().setVisible(true); 
     }//GEN-LAST:event_addNewDonorMenuItemActionPerformed
 
-    private void updateDetailsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDetailsMenuItemActionPerformed
+    private void updateDonorDetailsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDonorDetailsMenuItemActionPerformed
         // TODO add your handling code here:
         new UpdateDonorDetailsPage().setVisible(true); 
-    }//GEN-LAST:event_updateDetailsMenuItemActionPerformed
+    }//GEN-LAST:event_updateDonorDetailsMenuItemActionPerformed
 
     private void allDonorDetailsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allDonorDetailsMenuItemActionPerformed
         // TODO add your handling code here:
@@ -255,6 +282,16 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         new AddPatientDetailsPage().setVisible(true);
     }//GEN-LAST:event_addPatientMenuItemActionPerformed
+
+    private void updatePatientDetailsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePatientDetailsMenuItemActionPerformed
+        // TODO add your handling code here:
+        new UpdatePatientDetailsPage().setVisible(true);
+    }//GEN-LAST:event_updatePatientDetailsMenuItemActionPerformed
+
+    private void allPatientDetailsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allPatientDetailsMenuItemActionPerformed
+        // TODO add your handling code here:
+        new AllPatientDetailsPage().setVisible(true); 
+    }//GEN-LAST:event_allPatientDetailsMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,7 +330,9 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JMenuItem addNewDonorMenuItem;
     private javax.swing.JMenuItem addPatientMenuItem;
     private javax.swing.JMenuItem allDonorDetailsMenuItem;
+    private javax.swing.JMenuItem allPatientDetailsMenuItem;
     private javax.swing.JMenuItem deleteDonorMenuItem;
+    private javax.swing.JMenuItem deletePatientMenuItem;
     private javax.swing.JMenu exitMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JLabel jLabel1;
@@ -312,9 +351,13 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
+    private javax.swing.JPopupMenu.Separator jSeparator7;
+    private javax.swing.JPopupMenu.Separator jSeparator8;
+    private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JMenuItem logoutMenuItem;
     private javax.swing.JMenuItem searchByBloodGroupMenuItem;
     private javax.swing.JMenuItem searchByLocationMenuItem;
-    private javax.swing.JMenuItem updateDetailsMenuItem;
+    private javax.swing.JMenuItem updateDonorDetailsMenuItem;
+    private javax.swing.JMenuItem updatePatientDetailsMenuItem;
     // End of variables declaration//GEN-END:variables
 }

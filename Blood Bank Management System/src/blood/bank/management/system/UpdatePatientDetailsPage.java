@@ -1,22 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package blood.bank.management.system;
-import java.sql.*; 
-import database.ConnectionProvider; 
-import java.text.SimpleDateFormat;
+
+import database.ConnectionProvider;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author nahid
  */
-public class UpdateDonorDetailsPage extends javax.swing.JFrame {
+public class UpdatePatientDetailsPage extends javax.swing.JFrame {
 
     /**
-     * Creates new form UpdateDonorDetailsPage
+     * Creates new form UpdatePatientDetailsPage
      */
-    public UpdateDonorDetailsPage() {
+    public UpdatePatientDetailsPage() {
         initComponents();
     }
 
@@ -32,7 +31,7 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
-        donorIdField = new javax.swing.JTextField();
+        patientIdField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
@@ -57,6 +56,7 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         addressField = new javax.swing.JTextArea();
         jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
         updateButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
@@ -68,18 +68,18 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Update Donor Details");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 6, -1, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 77, 1366, 10));
+        jLabel1.setText("Update Patient Details");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(279, 19, -1, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 73, 1196, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Donor ID");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 108, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Patient ID");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 112, -1, -1));
 
-        donorIdField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(donorIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 105, 219, -1));
+        patientIdField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        getContentPane().add(patientIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 109, 237, -1));
 
-        searchButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        searchButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/search1.png"))); // NOI18N
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -87,83 +87,84 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
                 searchButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(693, 105, -1, -1));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 158, 1360, -1));
+        getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(588, 109, -1, -1));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 166, 1196, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Full Name");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 189, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 208, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Father Name");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 243, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 271, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Mother Name");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 293, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 330, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Date of Birth");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 342, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 386, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Mobile No");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 441, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Gender");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 455, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 495, -1, -1));
 
         fullNameField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(fullNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 186, 302, -1));
+        getContentPane().add(fullNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 205, 209, -1));
 
         fatherNameField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(fatherNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 240, 302, -1));
+        getContentPane().add(fatherNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 268, 209, -1));
 
         motherNameField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(motherNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 293, 302, -1));
+        getContentPane().add(motherNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 327, 209, -1));
 
         dateOfBirthField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(dateOfBirthField, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 339, 302, -1));
+        getContentPane().add(dateOfBirthField, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 383, 209, -1));
 
         mobileNumberField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(mobileNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 397, 302, -1));
+        getContentPane().add(mobileNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 438, 209, -1));
 
         genderField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(genderField, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 452, 302, -1));
+        getContentPane().add(genderField, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 492, 209, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Email");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(566, 189, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(494, 208, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Blood Group");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(566, 243, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(494, 271, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("City");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(566, 296, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(494, 330, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("Address");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(566, 383, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(494, 441, -1, -1));
 
         emailField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(699, 186, 281, -1));
+        getContentPane().add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 250, -1));
 
         bloodGroupField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(bloodGroupField, new org.netbeans.lib.awtextra.AbsoluteConstraints(699, 240, 281, -1));
+        getContentPane().add(bloodGroupField, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 250, -1));
 
         cityField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(cityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(699, 293, 281, -1));
+        getContentPane().add(cityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 327, 250, -1));
 
         addressField.setColumns(20);
         addressField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         addressField.setRows(5);
         jScrollPane1.setViewportView(addressField);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(699, 372, -1, -1));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 500, 1293, 10));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 419, -1, -1));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 543, 1200, 0));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 538, 1202, -1));
 
         updateButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         updateButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/save.png"))); // NOI18N
@@ -173,7 +174,7 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
                 updateButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 568, -1, -1));
+        getContentPane().add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 570, -1, -1));
 
         resetButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         resetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Update details.png"))); // NOI18N
@@ -183,7 +184,7 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
                 resetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 568, -1, -1));
+        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 570, -1, -1));
 
         closeButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Exit application.png"))); // NOI18N
@@ -193,33 +194,22 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
                 closeButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(733, 568, -1, -1));
+        getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(732, 570, -1, -1));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/login background final2.png"))); // NOI18N
         jLabel13.setText("jLabel13");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -3, 1200, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
-        // TODO add your handling code here:
-        setVisible(false); 
-    }//GEN-LAST:event_closeButtonActionPerformed
-
-    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false); 
-        new UpdateDonorDetailsPage().setVisible(true);
-    }//GEN-LAST:event_resetButtonActionPerformed
-
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        String donorId = donorIdField.getText(); 
+        String patientId = patientIdField.getText(); 
         try {
             Connection connection = ConnectionProvider.getConnection(); 
             Statement statement = connection.createStatement(); 
-            ResultSet resultSet = statement.executeQuery("select * from donor where iddonor='"+donorId+"'"); 
+            ResultSet resultSet = statement.executeQuery("select * from patient where idpatient='"+patientId+"'"); 
             
             if(resultSet.next()) {
                 fullNameField.setText(resultSet.getString(2));
@@ -233,10 +223,10 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
                 cityField.setText(resultSet.getString(10));
                 addressField.setText(resultSet.getString(11));
                 
-                donorIdField.setEditable(false);
+                patientIdField.setEditable(false);
             }
             else {
-                JOptionPane.showMessageDialog(null, "Donor id does not exist!");
+                JOptionPane.showMessageDialog(null, "Patient id does not exist!");
             }
         }
         catch(Exception e) {
@@ -244,9 +234,20 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchButtonActionPerformed
 
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false); 
+    }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new UpdatePatientDetailsPage().setVisible(true);
+    }//GEN-LAST:event_resetButtonActionPerformed
+
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-        String donorId = donorIdField.getText(); 
+        String patientId = patientIdField.getText(); 
         String name = fullNameField.getText(); 
         String fatherName = fatherNameField.getText(); 
         String motherName = motherNameField.getText(); 
@@ -263,10 +264,10 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
         try {
             Connection connection = ConnectionProvider.getConnection();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("update donor set name='"+name+"', father_name='"+fatherName+"', mother_name='"+motherName+"', date_of_birth='"+dateOfBirth+"', mobile_no='"+mobileNumber+"', gender='"+gender+"', email='"+email+"', blood_group='"+bloodGroup+"', city='"+city+"', address='"+address+"' where iddonor='"+donorId+"'");
-            JOptionPane.showMessageDialog(null, "Successfully updated donor details!");
+            statement.executeUpdate("update patient set name='"+name+"', father_name='"+fatherName+"', mother_name='"+motherName+"', date_of_birth='"+dateOfBirth+"', mobile_no='"+mobileNumber+"', gender='"+gender+"', email='"+email+"', blood_group='"+bloodGroup+"', city='"+city+"', address='"+address+"' where idpatient='"+patientId+"'");
+            JOptionPane.showMessageDialog(null, "Successfully updated patient details!");
             this.setVisible(false); 
-            new UpdateDonorDetailsPage().setVisible(true);
+            new UpdatePatientDetailsPage().setVisible(true);
         }
         catch(Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -291,21 +292,19 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateDonorDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdatePatientDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateDonorDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdatePatientDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateDonorDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdatePatientDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateDonorDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdatePatientDetailsPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UpdateDonorDetailsPage().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new UpdatePatientDetailsPage().setVisible(true);
         });
     }
 
@@ -315,7 +314,6 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
     private javax.swing.JTextField cityField;
     private javax.swing.JButton closeButton;
     private javax.swing.JTextField dateOfBirthField;
-    private javax.swing.JTextField donorIdField;
     private javax.swing.JTextField emailField;
     private javax.swing.JTextField fatherNameField;
     private javax.swing.JTextField fullNameField;
@@ -337,8 +335,10 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField mobileNumberField;
     private javax.swing.JTextField motherNameField;
+    private javax.swing.JTextField patientIdField;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JButton updateButton;
