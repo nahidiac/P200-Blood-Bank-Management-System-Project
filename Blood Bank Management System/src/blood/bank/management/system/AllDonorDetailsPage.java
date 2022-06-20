@@ -32,6 +32,7 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
         allDonorDetailsTable = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
         closeButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -63,8 +64,8 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
         allDonorDetailsTable.setRowMargin(5);
         jScrollPane1.setViewportView(allDonorDetailsTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 124, 1300, 473));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 624, 1403, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1200, 410));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 1200, 10));
 
         closeButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Exit application.png"))); // NOI18N
@@ -74,7 +75,11 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
                 closeButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 658, -1, -1));
+        getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 590, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/login background final2.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -135,6 +140,7 @@ public class AllDonorDetailsPage extends javax.swing.JFrame {
     private javax.swing.JTable allDonorDetailsTable;
     private javax.swing.JButton closeButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

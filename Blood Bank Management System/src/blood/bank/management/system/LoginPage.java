@@ -21,7 +21,7 @@ public class LoginPage extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -61,8 +61,9 @@ public class LoginPage extends javax.swing.JFrame {
         });
         getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 340, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/login background final2.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 660));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/login background final2.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -123,7 +124,7 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JButton closeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField usernameField;

@@ -60,6 +60,7 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
         updateButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(340, 130));
@@ -194,6 +195,10 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
         });
         getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(733, 568, -1, -1));
 
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/login background final2.png"))); // NOI18N
+        jLabel13.setText("jLabel13");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -319,6 +324,7 @@ public class UpdateDonorDetailsPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -39,6 +39,7 @@ public class LocationBasedDonorSearchPage extends javax.swing.JFrame {
         allDonorDetailsTable = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
         closeButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(340, 130));
@@ -52,13 +53,13 @@ public class LocationBasedDonorSearchPage extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("Search Blood Donor by Location");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 23, -1, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 83, 1316, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, -1, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 890, 10));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Location.png"))); // NOI18N
         jLabel2.setText("Address");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 119, 106, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 106, -1));
 
         addressField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         addressField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -66,8 +67,8 @@ public class LocationBasedDonorSearchPage extends javax.swing.JFrame {
                 addressFieldKeyReleased(evt);
             }
         });
-        getContentPane().add(addressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 116, 253, -1));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 181, 1294, -1));
+        getContentPane().add(addressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 253, -1));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 123, 1200, -1));
 
         allDonorDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,8 +84,8 @@ public class LocationBasedDonorSearchPage extends javax.swing.JFrame {
         allDonorDetailsTable.setRowHeight(30);
         jScrollPane1.setViewportView(allDonorDetailsTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 1355, 400));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 628, 1349, 10));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 1180, 400));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 553, 1200, 0));
 
         closeButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Exit application.png"))); // NOI18N
@@ -94,7 +95,11 @@ public class LocationBasedDonorSearchPage extends javax.swing.JFrame {
                 closeButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 673, -1, -1));
+        getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 550, -1, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/login background final2.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -173,6 +178,7 @@ public class LocationBasedDonorSearchPage extends javax.swing.JFrame {
     private javax.swing.JButton closeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

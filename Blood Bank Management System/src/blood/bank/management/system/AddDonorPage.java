@@ -49,6 +49,7 @@ public class AddDonorPage extends javax.swing.JFrame {
         closeButton = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         donorIdLabel = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(340, 130));
@@ -145,7 +146,7 @@ public class AddDonorPage extends javax.swing.JFrame {
         addressField.setRows(5);
         jScrollPane1.setViewportView(addressField);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(659, 384, 319, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 370, 319, -1));
 
         bloodGroupField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bloodGroupField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" }));
@@ -189,8 +190,11 @@ public class AddDonorPage extends javax.swing.JFrame {
 
         donorIdLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         donorIdLabel.setForeground(new java.awt.Color(255, 0, 0));
-        donorIdLabel.setText("jLabel14");
-        getContentPane().add(donorIdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 145, -1, -1));
+        getContentPane().add(donorIdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 145, 130, 30));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/login background final2.png"))); // NOI18N
+        jLabel14.setText("jLabel14");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -304,6 +308,7 @@ public class AddDonorPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

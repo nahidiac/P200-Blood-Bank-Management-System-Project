@@ -42,6 +42,7 @@ public class BloodGroupBasedDonorSearchPage extends javax.swing.JFrame {
         allDonorDetailsTable = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
         closeButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -54,13 +55,13 @@ public class BloodGroupBasedDonorSearchPage extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("Search Blood by Blood Group");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 19, -1, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 85, 1267, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1267, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Blood group.png"))); // NOI18N
         jLabel2.setText("Blood Group");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 109, 152, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 152, -1));
 
         bloodGroupField.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bloodGroupField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -68,8 +69,8 @@ public class BloodGroupBasedDonorSearchPage extends javax.swing.JFrame {
                 bloodGroupFieldKeyReleased(evt);
             }
         });
-        getContentPane().add(bloodGroupField, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 106, 275, -1));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 172, 1261, -1));
+        getContentPane().add(bloodGroupField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 275, -1));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1261, 10));
 
         allDonorDetailsTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         allDonorDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -86,8 +87,8 @@ public class BloodGroupBasedDonorSearchPage extends javax.swing.JFrame {
         allDonorDetailsTable.setRowHeight(30);
         jScrollPane1.setViewportView(allDonorDetailsTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 193, 1267, 413));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 638, 1267, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 1140, 380));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 573, 1200, 0));
 
         closeButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Exit application.png"))); // NOI18N
@@ -97,7 +98,11 @@ public class BloodGroupBasedDonorSearchPage extends javax.swing.JFrame {
                 closeButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(488, 678, -1, -1));
+        getContentPane().add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 590, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/login background final2.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -175,6 +180,7 @@ public class BloodGroupBasedDonorSearchPage extends javax.swing.JFrame {
     private javax.swing.JButton closeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
