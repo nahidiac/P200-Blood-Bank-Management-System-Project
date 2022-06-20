@@ -28,6 +28,8 @@ public class HomePage extends javax.swing.JFrame {
         updateDetailsMenuItem = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         allDonorDetailsMenuItem = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        addPatientMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         searchByLocationMenuItem = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
@@ -83,6 +85,20 @@ public class HomePage extends javax.swing.JFrame {
         jMenu1.add(allDonorDetailsMenuItem);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Donor.png"))); // NOI18N
+        jMenu6.setText("Patient");
+
+        addPatientMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Add new.png"))); // NOI18N
+        addPatientMenuItem.setText("Add Patient");
+        addPatientMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPatientMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu6.add(addPatientMenuItem);
+
+        jMenuBar1.add(jMenu6);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/search user.png"))); // NOI18N
         jMenu2.setText("Search Donor");
@@ -235,6 +251,11 @@ public class HomePage extends javax.swing.JFrame {
         new DeleteDonorPage().setVisible(true);
     }//GEN-LAST:event_deleteDonorMenuItemActionPerformed
 
+    private void addPatientMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPatientMenuItemActionPerformed
+        // TODO add your handling code here:
+        new AddPatientDetailsPage().setVisible(true);
+    }//GEN-LAST:event_addPatientMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -270,6 +291,7 @@ public class HomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addNewDonorMenuItem;
+    private javax.swing.JMenuItem addPatientMenuItem;
     private javax.swing.JMenuItem allDonorDetailsMenuItem;
     private javax.swing.JMenuItem deleteDonorMenuItem;
     private javax.swing.JMenu exitMenu;
@@ -280,6 +302,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
