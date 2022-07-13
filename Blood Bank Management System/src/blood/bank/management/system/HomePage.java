@@ -39,11 +39,12 @@ public class HomePage extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         searchByBloodGroupMenuItem = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        increaseMenuItem = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        decreaseMenuItem = new javax.swing.JMenuItem();
+        jSeparator10 = new javax.swing.JPopupMenu.Separator();
+        detailsMenuItem = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         deleteDonorMenuItem = new javax.swing.JMenuItem();
         jSeparator9 = new javax.swing.JPopupMenu.Separator();
@@ -153,20 +154,36 @@ public class HomePage extends javax.swing.JFrame {
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/stock.png"))); // NOI18N
         jMenu3.setText("Stock");
-
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Inc.png"))); // NOI18N
-        jMenu4.setText("Increase");
-        jMenu3.add(jMenu4);
         jMenu3.add(jSeparator4);
 
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Dec.png"))); // NOI18N
-        jMenuItem6.setText("Decrease");
-        jMenu3.add(jMenuItem6);
+        increaseMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Inc.png"))); // NOI18N
+        increaseMenuItem.setText("Increase");
+        increaseMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                increaseMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu3.add(increaseMenuItem);
         jMenu3.add(jSeparator5);
 
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Details.png"))); // NOI18N
-        jMenuItem7.setText("Details");
-        jMenu3.add(jMenuItem7);
+        decreaseMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Dec.png"))); // NOI18N
+        decreaseMenuItem.setText("Decrease");
+        decreaseMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                decreaseMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu3.add(decreaseMenuItem);
+        jMenu3.add(jSeparator10);
+
+        detailsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blood/bank/management/system/icons/Details.png"))); // NOI18N
+        detailsMenuItem.setText("Details");
+        detailsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detailsMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu3.add(detailsMenuItem);
 
         jMenuBar1.add(jMenu3);
 
@@ -293,6 +310,21 @@ public class HomePage extends javax.swing.JFrame {
         new AllPatientDetailsPage().setVisible(true); 
     }//GEN-LAST:event_allPatientDetailsMenuItemActionPerformed
 
+    private void increaseMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_increaseMenuItemActionPerformed
+        // TODO add your handling code here:
+        new StockManagementPage().setVisible(true);
+    }//GEN-LAST:event_increaseMenuItemActionPerformed
+
+    private void decreaseMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decreaseMenuItemActionPerformed
+        // TODO add your handling code here:
+        new StockManagementPage().setVisible(true);
+    }//GEN-LAST:event_decreaseMenuItemActionPerformed
+
+    private void detailsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailsMenuItemActionPerformed
+        // TODO add your handling code here:
+        new StockDetailsPage().setVisible(true);
+    }//GEN-LAST:event_detailsMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -331,21 +363,22 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JMenuItem addPatientMenuItem;
     private javax.swing.JMenuItem allDonorDetailsMenuItem;
     private javax.swing.JMenuItem allPatientDetailsMenuItem;
+    private javax.swing.JMenuItem decreaseMenuItem;
     private javax.swing.JMenuItem deleteDonorMenuItem;
     private javax.swing.JMenuItem deletePatientMenuItem;
+    private javax.swing.JMenuItem detailsMenuItem;
     private javax.swing.JMenu exitMenu;
     private javax.swing.JMenuItem exitMenuItem;
+    private javax.swing.JMenuItem increaseMenuItem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator10;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
